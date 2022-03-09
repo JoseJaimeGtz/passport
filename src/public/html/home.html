@@ -37,6 +37,22 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script>
+    const login = document.querySelector('.login');
+    const logout = document.querySelector('.logout');
+
+    fetch('http://localhost:3000/auth/verifyLogin')
+      .then((res) => {
+        if (res.status === 200) {
+          logout.style.removeProperty('display');
+        } else if (res.status === 401) {
+          login.style.removeProperty('display');
+        } else {
+          login.style.removeProperty('display');
+        }
+      })
+      .catch((err) => {
+        login.style.removeProperty('display');
+      });
   </script>
 </body>
 
